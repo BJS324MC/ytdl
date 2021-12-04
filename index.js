@@ -7,7 +7,7 @@ app.use(cors());
 app.get('/:id/:type', async (req, res) => {
   const { id, type } = req.params;
   if (type === 'audio') {
-    res.header('Content-Disposition',`attachment; filename=${id}.mp3`);
+    res.setHeader('Content-Disposition',`attachment; filename=${id}.mp3`);
     ytdl(baseURL + id, {filter: 'audioonly',quality: 'highest'}).pipe(res);
   } else if (type === 'video'){
     res.header('Content-Disposition',`attachment; filename="${id}.mp4"`);
@@ -21,4 +21,5 @@ app.get('/:id', async (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server ready at port ${port}`));//tPEE9ZwTmy0
+app.listen(port, () => console.log(`Server ready at port ${port}`));
+//tPEE9ZwTmy0  MvO0oJcqBmA
