@@ -7,7 +7,7 @@ app.use(cors());
 app.get('/:id/:type', async (req, res) => {
   const { id, type } = req.params;
   if (type === 'audio') {
-    res.setHeader('Content-Disposition',`attachment; filename=${id}.mp3`);
+    res.header('Content-Disposition',`attachment; filename=${id}.mp3`);
     ytdl(baseURL + id, {filter: 'audioonly',quality: 'highest'}).pipe(res);
   } else if (type === 'video'){
     res.header('Content-Disposition',`attachment; filename="${id}.mp4"`);
